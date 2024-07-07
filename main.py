@@ -15,6 +15,10 @@ import re
 from anthropic import Anthropic
 import difflib
 import time
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Initialize colorama
 init()
@@ -30,10 +34,10 @@ CONTINUATION_EXIT_PHRASE = "AUTOMODE_COMPLETE"
 MAX_CONTINUATION_ITERATIONS = 25
 
 # Initialize the Anthropic client
-client = Anthropic(api_key="YOUR KEY")
+client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 # Initialize the Tavily client
-tavily = TavilyClient(api_key="YOUR KEY")
+tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
 
 # Set up the conversation memory
 conversation_history = []
